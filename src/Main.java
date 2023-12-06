@@ -1,3 +1,4 @@
+import classes.Information;
 import classes.Messages;
 
 public class Main {
@@ -6,6 +7,7 @@ public class Main {
         Messages.welcomeMessage();
 
         // calling method using object
+        // here Messages() is a default no args constructor
         Messages messages = new Messages();
         // set value to a variable in Messages class using object
         messages.name = "Tuhin";
@@ -14,13 +16,16 @@ public class Main {
 
         variables();
         loops();
+
+        Information info = new Information("Tuhin", "tahidur.cse@gmail.com");
+        info.introduction();
     }
 
     private static void variables() {
         // primitive types
         // starts with lowercase
-        int age = 10;
-        double shoeSize = 9.5;
+        short age = 10;
+        float shoeSize = 9.5f;
         char empty = ' ';
 
         // non-primitive types
@@ -35,14 +40,14 @@ public class Main {
         methodWithParameter(age);
     }
 
-    private static void methodWithParameter(int age) {
+    private static void methodWithParameter(short age) {
 
         String result = methodWithReturn(age);
 
         System.out.println(result);
     }
 
-    private static String methodWithReturn(int age) {
+    private static String methodWithReturn(short age) {
         String result;
 
         // conditional statement
