@@ -1,3 +1,4 @@
+import classes.Constants;
 import classes.Information;
 import classes.Messages;
 
@@ -19,6 +20,16 @@ public class Main {
 
         Information info = new Information("Tuhin", "tahidur.cse@gmail.com");
         info.introduction();
+
+        Information ageInfo = new Information((short) 28);
+        System.out.println("My age is: "+ageInfo.age);
+
+//        Constants constants = new Constants();
+//        constants.PI = 3.14;
+//        System.out.println(constants.PI);
+
+
+        System.out.println(Constants.PI);
     }
 
     private static void variables() {
