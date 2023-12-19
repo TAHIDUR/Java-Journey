@@ -2,8 +2,39 @@ import classes.Constants;
 import classes.Information;
 import classes.Messages;
 
+import Tests.Customer;
+
 public class Main {
     public static void main(String[] args) {
+        Customer customer = new Customer();
+        customer.name = "Pinky";
+        customer.size = "S";
+
+        int measurement = 3;
+
+        switch (measurement) {
+            case 1:
+            case 2:
+            case 3:
+                customer.size = "S";
+                break;
+            case 4:
+            case 5:
+            case 6:
+                customer.size = "M";
+                break;
+            case 7:
+            case 8:
+            case 9:
+                customer.size = "L";
+                break;
+            default:
+                customer.size = "X";
+                break;
+        }
+
+        System.out.println(customer.size);
+
         // call a static method from a class
         Messages.welcomeMessage();
 
@@ -30,6 +61,8 @@ public class Main {
 
 
         System.out.println(Constants.PI);
+
+
     }
 
     private static void variables() {
@@ -43,8 +76,8 @@ public class Main {
         // starts with uppercase
         String name = "Tuhin";
 
-        System.out.println(empty + age); // ascii of empty string (' ') is 32
-        System.out.println("My age: "+age+" and shoe size: "+shoeSize);
+        System.out.println(empty + age); // ascii of empty string is 32
+        System.out.println("My age: " + age + " and shoe size: " + shoeSize);
         System.out.printf("My age: %d and shoe size: %.2f\n", age, shoeSize);
         System.out.printf("My name is %s\n", name);
 
@@ -66,7 +99,7 @@ public class Main {
             result = "I am adult";
         } else if (age <= 0) {
             result = "invalid age";
-        } else{
+        } else {
             result = "I am not adult";
         }
         return result;
@@ -74,8 +107,8 @@ public class Main {
 
     private static void loops() {
         System.out.println("Tabulation sheet for 8");
-        for(int i = 1; i < 11; i++) {
-            System.out.printf("%d x 8 = %d\n", i, i*8);
+        for (int i = 1; i < 11; i++) {
+            System.out.printf("%d x 8 = %d\n", i, i * 8);
         }
     }
 }
