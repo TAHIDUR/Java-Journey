@@ -1,6 +1,8 @@
 package classes;
 
-public class Information {
+import interfaces.Playable;
+
+public class Information implements Playable {
     public String name;
     public String email;
     public short age;
@@ -15,5 +17,16 @@ public class Information {
     public void introduction() {
         System.out.println("Hello "+name);
         System.out.println("Email address: "+email);
+    }
+
+
+    @Override
+    public boolean canPlay() {
+        return false;
+    }
+
+    @Override
+    public void play() {
+        Playable.super.play();
     }
 }

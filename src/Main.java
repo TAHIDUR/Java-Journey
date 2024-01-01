@@ -1,68 +1,34 @@
-import classes.Constants;
-import classes.Information;
-import classes.Messages;
-
+import classes.*;
 import Tests.Customer;
 
 public class Main {
     public static void main(String[] args) {
-        Customer customer = new Customer();
-        customer.name = "Pinky";
-        customer.size = "S";
+//        switchCase();
+//
+//        // call a static method from a class
+//        Messages.welcomeMessage();
+//
+//        // calling method using object
+//        // here Messages() is a default no args constructor
+//        Messages messages = new Messages();
+//        // set value to a variable in Messages class using object
+//        messages.name = "Tuhin";
+//
+//        messages.welcome();
+//
+//        variables();
+//        loops();
+//
+//        Information info = new Information("Tuhin", "tahidur.cse@gmail.com");
+//        info.introduction();
+//
+//        Information ageInfo = new Information((short) 28);
+//        System.out.println("My age is: "+ageInfo.age);
+//
+//        System.out.println(Constants.PI);
+//        PrimitivePlayground.declaration();
 
-        int measurement = 3;
-
-        switch (measurement) {
-            case 1:
-            case 2:
-            case 3:
-                customer.size = "S";
-                break;
-            case 4:
-            case 5:
-            case 6:
-                customer.size = "M";
-                break;
-            case 7:
-            case 8:
-            case 9:
-                customer.size = "L";
-                break;
-            default:
-                customer.size = "X";
-                break;
-        }
-
-        System.out.println(customer.size);
-
-        // call a static method from a class
-        Messages.welcomeMessage();
-
-        // calling method using object
-        // here Messages() is a default no args constructor
-        Messages messages = new Messages();
-        // set value to a variable in Messages class using object
-        messages.name = "Tuhin";
-
-        messages.welcome();
-
-        variables();
-        loops();
-
-        Information info = new Information("Tuhin", "tahidur.cse@gmail.com");
-        info.introduction();
-
-        Information ageInfo = new Information((short) 28);
-        System.out.println("My age is: "+ageInfo.age);
-
-//        Constants constants = new Constants();
-//        constants.PI = 3.14;
-//        System.out.println(constants.PI);
-
-
-        System.out.println(Constants.PI);
-
-
+        KeywordPlayGround.start();
     }
 
     private static void variables() {
@@ -110,5 +76,36 @@ public class Main {
         for (int i = 1; i < 11; i++) {
             System.out.printf("%d x 8 = %d\n", i, i * 8);
         }
+    }
+
+    private static void switchCase() {
+        Customer customer = new Customer();
+        customer.name = "Pinky";
+        customer.size = "S";
+
+        int measurement = 3;
+
+        switch (measurement) {
+            case 1:
+            case 2:
+            case 3:
+                customer.size = "S";
+                break;
+            case 4:
+            case 5:
+            case 6:
+                customer.size = "M";
+                break;
+            case 7:
+            case 8:
+            case 9:
+                customer.size = "L";
+                break;
+            default:
+                customer.size = "X";
+                break;
+        }
+
+        System.out.println(customer.size);
     }
 }
