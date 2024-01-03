@@ -2,12 +2,13 @@ package classes;
 
 import interfaces.Playable;
 
-public class Information implements Playable {
+public class Information extends AbstructClass {
     public String name;
     public String email;
     public short age;
     // constructor method having the same name as the class
     public Information(String name, String email) {
+        super();
         this.name = name;
         this.email = email;
     }
@@ -21,12 +22,17 @@ public class Information implements Playable {
 
 
     @Override
+    void show() {
+        
+    }
+
+    @Override
     public boolean canPlay() {
         return false;
     }
 
     @Override
     public void play() {
-        Playable.super.play();
+        super.play();
     }
 }
