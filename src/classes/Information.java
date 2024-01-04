@@ -1,7 +1,5 @@
 package classes;
 
-import interfaces.Playable;
-
 public class Information extends AbstructClass {
     public String name;
     public String email;
@@ -22,17 +20,18 @@ public class Information extends AbstructClass {
 
 
     @Override
-    void show() {
-        
-    }
-
-    @Override
     public boolean canPlay() {
         return false;
     }
 
     @Override
     public void play() {
+        System.out.println("play from class information");
         super.play();
+    }
+
+    @Override
+    public void show() {
+        System.out.println("Show from abstract method from an abstract class");
     }
 }

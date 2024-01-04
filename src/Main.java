@@ -1,5 +1,6 @@
 import classes.*;
 import Tests.Customer;
+import interfaces.Playable;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,6 +32,11 @@ public class Main {
 //        KeywordPlayGround.start();
 
 //        FileInputOutput.fileRead();
+
+        Playable info = new Information("tuhin", "tahidur.cse@gmail.com");
+
+        info.play();
+
     }
 
     private static void variables() {
