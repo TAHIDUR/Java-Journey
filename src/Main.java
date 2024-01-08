@@ -2,6 +2,8 @@ import classes.*;
 import Tests.Customer;
 import interfaces.Playable;
 
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
 //        switchCase();
@@ -33,9 +35,17 @@ public class Main {
 
 //        FileInputOutput.fileRead();
 
-        Playable info = new Information("tuhin", "tahidur.cse@gmail.com");
+//        Playable info = new Information("Tuhin", "tahidur.cse@gmail.com");
+//
+//        info.play();
 
-        info.play();
+//        try {
+//            FileInputOutput.serialize();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        FileInputOutput.deserialize();
 
     }
 
