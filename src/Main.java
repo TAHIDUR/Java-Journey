@@ -3,8 +3,17 @@ import Tests.Customer;
 import interfaces.Playable;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+import static java.lang.System.exit;
 
 public class Main {
+
     public static void main(String[] args) {
 //        switchCase();
 //
@@ -47,21 +56,50 @@ public class Main {
 
 //        FileInputOutput.deserialize();
 
+            // Multi threading
+//        Thread t = new ThreadMethod("Thread 1");
+//        Thread t1 = new Thread(new ThreadInterface("Thread 2"));
+//        ThreadCallable t3 = new ThreadCallable("Thread 3");
+//        System.out.println("Main method");
+//        t.start();
+//        t1.start();
+//        try {
+//            String result = t3.call();
+//            System.out.println(result);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
 
-        Thread t = new ThreadMethod("Thread 1");
-        Thread t1 = new Thread(new ThreadInterface("Thread 2"));
-        ThreadCallable t3 = new ThreadCallable("Thread 3");
-        System.out.println("Main method");
-        t.start();
-        t1.start();
-        try {
-            String result = t3.call();
-            System.out.println(result);
-        } catch (Exception e) {
+        List<List<Integer>> intList = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+        int value = 1;
+
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        List<Future<Integer>> futures = new ArrayList<>();
+
+        for(int i = 0; i < 5; i++) {
+            for (int j = 0; j < 20; j++) {
+                temp.add(value++);
+            }
+            intList.add(temp);
+
+            Callable<Integer> worker = new WorkerThread(intList.get(i));
+            futures.add( executorService.submit(worker));
+        }
+
+        executorService.shutdown();
+        int sum = 0;
+
+        try{
+            for (Future<Integer> future : futures) {
+                sum += future.get();
+            }
+        }catch (Exception e){
             throw new RuntimeException(e);
         }
-    }
 
+        System.out.println("Final Sum: "+sum);
+    }
     private static void variables() {
         // primitive types
         // starts with lowercase
