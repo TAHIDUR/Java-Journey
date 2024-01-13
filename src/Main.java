@@ -70,21 +70,21 @@ public class Main {
 //            throw new RuntimeException(e);
 //        }
 
-        List<List<Integer>> intList = new ArrayList<>();
-        List<Integer> temp = new ArrayList<>();
         int value = 1;
 
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         List<Future<Integer>> futures = new ArrayList<>();
 
         for(int i = 0; i < 5; i++) {
+            List<Integer> temp = new ArrayList<>();
+
             for (int j = 0; j < 20; j++) {
                 temp.add(value++);
             }
-            intList.add(temp);
+            System.out.println("List of value : " + temp);
 
-            Callable<Integer> worker = new WorkerThread(intList.get(i));
-            futures.add( executorService.submit(worker));
+            Callable<Integer> worker = new WorkerThread(temp);
+            futures.add(executorService.submit(worker));
         }
 
         executorService.shutdown();

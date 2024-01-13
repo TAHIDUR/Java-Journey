@@ -14,11 +14,12 @@ public class WorkerThread implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         System.out.println("Thread " + Thread.currentThread().getName() + " is running");
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         int sum = 0;
         for(int val: integerList){
             sum += val;
         }
+        System.out.println("Calculated sum from "+ integerList.getFirst() + " to " + integerList.getLast() + " is: " + sum);
         return sum;
     }
 
