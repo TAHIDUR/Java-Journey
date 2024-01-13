@@ -45,8 +45,21 @@ public class Main {
 //            throw new RuntimeException(e);
 //        }
 
-        FileInputOutput.deserialize();
+//        FileInputOutput.deserialize();
 
+
+        Thread t = new ThreadMethod("Thread 1");
+        Thread t1 = new Thread(new ThreadInterface("Thread 2"));
+        ThreadCallable t3 = new ThreadCallable("Thread 3");
+        System.out.println("Main method");
+        t.start();
+        t1.start();
+        try {
+            String result = t3.call();
+            System.out.println(result);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void variables() {
