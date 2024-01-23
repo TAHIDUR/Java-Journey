@@ -70,35 +70,38 @@ public class Main {
 //            throw new RuntimeException(e);
 //        }
 
-        int value = 1;
+        int arr[] = {1, 2, 3, 4, 5};
 
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
-        List<Future<Integer>> futures = new ArrayList<>();
-
-        for(int i = 0; i < 5; i++) {
-            List<Integer> temp = new ArrayList<>();
-
-            for (int j = 0; j < 20; j++) {
-                temp.add(value++);
-            }
-            System.out.println("List of value : " + temp);
-
-            Callable<Integer> worker = new WorkerThread(temp);
-            futures.add(executorService.submit(worker));
-        }
-
-        executorService.shutdown();
-        int sum = 0;
-
-        try{
-            for (Future<Integer> future : futures) {
-                sum += future.get();
-            }
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
-
-        System.out.println("Final Sum: "+sum);
+        System.out.println(arr[0]);
+//        int value = 1;
+//
+//        ExecutorService executorService = Executors.newFixedThreadPool(5);
+//        List<Future<Integer>> futures = new ArrayList<>();
+//
+//        for(int i = 0; i < 5; i++) {
+//            List<Integer> temp = new ArrayList<>();
+//
+//            for (int j = 0; j < 20; j++) {
+//                temp.add(value++);
+//            }
+//            System.out.println("List of value : " + temp);
+//
+//            Callable<Integer> worker = new WorkerThread(temp);
+//            futures.add(executorService.submit(worker));
+//        }
+//
+//        executorService.shutdown();
+//        int sum = 0;
+//
+//        try{
+//            for (Future<Integer> future : futures) {
+//                sum += future.get();
+//            }
+//        }catch (Exception e){
+//            throw new RuntimeException(e);
+//        }
+//
+//        System.out.println("Final Sum: "+sum);
     }
     private static void variables() {
         // primitive types
