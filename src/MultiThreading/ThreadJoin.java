@@ -1,4 +1,4 @@
-package classes;
+package MultiThreading;
 
 public class ThreadJoin extends Thread {
 

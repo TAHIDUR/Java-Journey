@@ -1,4 +1,4 @@
-package classes;
+package MultiThreading;
 
 public class ThreadMethod extends Thread {
     private String name;

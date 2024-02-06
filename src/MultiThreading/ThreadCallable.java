@@ -1,4 +1,4 @@
-package classes;
+package MultiThreading;
 
 import java.util.concurrent.Callable;
 
