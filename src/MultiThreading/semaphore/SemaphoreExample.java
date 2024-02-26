@@ -15,26 +15,24 @@ public class SemaphoreExample {
         try {
             executor = Executors.newFixedThreadPool(5);
 
+            List<Future<Integer>> futures = new ArrayList<>();
 
+            Set<Integer> orderNumbers = new HashSet<>();
 
-        List<Future<Integer>> futures = new ArrayList<>();
+            Semaphore sem = new Semaphore(1);
+            for (int i = 0; i < count; i++) {
+                Callable<Integer> thread = new SemOrderNumber(sem);
+                futures.add(i, executor.submit(thread));
+            }
 
-        Set<Integer> orderNumbers = new HashSet<>();
+            executor.shutdown();
 
-        for (int i = 0; i < count; i++) {
-            Callable<Integer> thread = new OrderNumber();
-            futures.add(i, executor.submit(thread));
-        }
-
-
-        executor.shutdown();
-
-        for (Future<Integer> future : futures) {
-            Integer orderNumber = future.get();
-            orderNumbers.add(orderNumber);
-            System.out.println("Order number: " + orderNumber);
-        }
-        System.out.println("Total order numbers: " + orderNumbers.size());
+            for (Future<Integer> future : futures) {
+                Integer orderNumber = future.get();
+                orderNumbers.add(orderNumber);
+                System.out.println("Order number: " + orderNumber);
+            }
+            System.out.println("Total order numbers: " + orderNumbers.size());
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }

@@ -29,7 +29,7 @@ public class ReentranceLockExample {
                 orderNumbers.add(orderNumber);
                 System.out.println("Order number: " + orderNumber);
             }
-            System.out.println("Total order numbers: " + orderNumbers.size());
+            System.out.println("Total Unique order numbers: " + orderNumbers.size());
         }catch (NullPointerException e) {
             throw new NullPointerException();
         } catch (ExecutionException | InterruptedException e) {
