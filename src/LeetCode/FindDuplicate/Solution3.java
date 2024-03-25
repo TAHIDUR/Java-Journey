@@ -1,7 +1,5 @@
 package LeetCode.FindDuplicate;
 
-import java.util.Arrays;
-
 // linear runtime complexity
 // Runtime 34ms
 // Memory 58.4MB
