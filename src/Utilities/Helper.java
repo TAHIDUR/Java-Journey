@@ -7,7 +7,7 @@ public class Helper {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();
     }
-    public static void printInt(int info){
+    public static <T> void print(T info){
         System.out.println(info);
     }
 }
