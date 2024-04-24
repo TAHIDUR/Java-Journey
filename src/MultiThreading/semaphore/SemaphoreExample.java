@@ -10,6 +10,7 @@ public class SemaphoreExample {
 
 
     public static void main(String[] args) {
+        ForkJoinPool pool = new ForkJoinPool();
         int count = 10;
         ExecutorService executor;
         try {
@@ -22,6 +23,7 @@ public class SemaphoreExample {
             Semaphore sem = new Semaphore(1);
             for (int i = 0; i < count; i++) {
                 Callable<Integer> thread = new SemOrderNumber(sem);
+                FutureTask task = new FutureTask(thread);
                 futures.add(i, executor.submit(thread));
             }
 
