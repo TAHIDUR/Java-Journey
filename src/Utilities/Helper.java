@@ -14,6 +14,9 @@ public class Helper {
     }
 
     public static <T> void print(T info) {
+        System.out.print(info);
+    }
+    public static <T> void println(T info) {
         System.out.println(info);
     }
 
