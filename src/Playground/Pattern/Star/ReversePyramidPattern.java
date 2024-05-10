@@ -3,7 +3,8 @@ package Playground.Pattern.Star;
 import static Utilities.Helper.*;
 public class ReversePyramidPattern {
     public static void main(String[] args) {
-        int r = 8;
+        print("Enter the number of raw: ");
+        int r = ScanInteger();
         reversePyramid(r);
     }
 

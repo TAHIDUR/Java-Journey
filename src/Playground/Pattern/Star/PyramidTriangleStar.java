@@ -5,7 +5,7 @@ import static Utilities.Helper.print;
 
 public class PyramidTriangleStar {
     public static void main(String[] args) {
-        print("Enter the number of raw for Pyramid Start: ");
+        print("Enter the number of raw: ");
         int rows = ScanInteger();
         for(int i=1;i<=rows;i++){
             for(int j=1;j<=rows;j++){

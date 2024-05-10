@@ -5,7 +5,7 @@ import static Utilities.Helper.*;
 
 public class DiamondPattern {
     public static void main(String[] args) {
-        print("Enter the number of raw for diamond start: ");
+        print("Enter the number of raw: ");
         int r = ScanInteger();
         for(int i = 1;i < r;i ++){
             for(int j = 1;j < r;j ++) {
