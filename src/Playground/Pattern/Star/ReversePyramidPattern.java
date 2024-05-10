@@ -1,4 +1,4 @@
-package Playground.Pattern;
+package Playground.Pattern.Star;
 
 import static Utilities.Helper.*;
 public class ReversePyramidPattern {

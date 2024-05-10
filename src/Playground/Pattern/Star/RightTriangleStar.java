@@ -1,4 +1,4 @@
-package Playground.Pattern;
+package Playground.Pattern.Star;
 
 public class RightTriangleStar {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Playground.Pattern;
+package Playground.Pattern.Star;
 
 import static Utilities.Helper.ScanInteger;
 import static Utilities.Helper.print;

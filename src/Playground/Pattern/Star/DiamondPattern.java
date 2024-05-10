@@ -1,6 +1,6 @@
-package Playground.Pattern;
+package Playground.Pattern.Star;
 
-import static Playground.Pattern.ReversePyramidPattern.reversePyramid;
+import static Playground.Pattern.Star.ReversePyramidPattern.reversePyramid;
 import static Utilities.Helper.*;
 
 public class DiamondPattern {
