@@ -1,4 +1,4 @@
-package Playground.Socket;
+package Playground.Socket.Tcp;
 
 import static Utilities.Helper.println;
 

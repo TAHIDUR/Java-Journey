@@ -1,4 +1,4 @@
-package Playground.Socket;
+package Playground.Socket.Tcp;
 
 import java.io.*;
 import java.net.Socket;
