@@ -4,7 +4,7 @@ import Utilities.Helper;
 
 public class Factorial {
     public static void main(String[] args) {
-        Helper.print("Enter the number for Factorial");
+        Helper.print("Enter the number for Factorial: ");
         int factorial = Helper.ScanInteger();
         Helper.print("1 Using Loop");
         Helper.print("2 Using Recursion");
