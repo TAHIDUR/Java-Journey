@@ -7,9 +7,9 @@ public class DiamondPattern {
     public static void main(String[] args) {
         print("Enter the number of raw: ");
         int r = ScanInteger();
-        for(int i = 1;i < r;i ++){
-            for(int j = 1;j < r;j ++) {
-                if((i + j) >= r) {
+        for(int i = 1;i <= r;i ++){
+            for(int j = 1;j <= r;j ++) {
+                if((i + j) > r) {
                     print("* ");
                 }else{
                     print(" ");
@@ -17,6 +17,6 @@ public class DiamondPattern {
             }
             println("");
         }
-        reversePyramid(r);
+        reversePyramid(r, 2);
     }
 }

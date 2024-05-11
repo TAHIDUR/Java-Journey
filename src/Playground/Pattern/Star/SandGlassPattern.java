@@ -9,7 +9,7 @@ public class SandGlassPattern {
     public static void main(String[] args) {
         print("Enter the number of raw: ");
         int r = ScanInteger();
-        reversePyramid(r);
+        reversePyramid(r, 1);
         pyramidPattern(r);
     }
 }
