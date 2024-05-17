@@ -1,4 +1,4 @@
-package Playground.Socket.Tcp.Chat;
+package Playground.Socket.ChatMultithreading;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,6 @@ public class Server {
         try {
             while (!serverSocket.isClosed()) {
                 Socket socket = serverSocket.accept();
-                println("Client joined");
                 ClientHandler clientHandler = new ClientHandler(socket);
                 new Thread(clientHandler).start();
             }
@@ -32,15 +31,12 @@ public class Server {
 
     private void closeServerSocket() {
         try {
-            if (serverSocket != null) {
-                serverSocket.close();
-            }
-        } catch (IOException ignore) {
-        }
+            if (serverSocket != null) serverSocket.close();
+        } catch (IOException ignore) { }
     }
 
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(9999);
+        ServerSocket serverSocket = new ServerSocket(9898);
         Server server = new Server(serverSocket);
         server.startServer();
     }
@@ -59,6 +55,7 @@ public class Server {
                 this.printWriter = new PrintWriter(socket.getOutputStream(), true);
                 this.username = bufferedReader.readLine();
                 clientHandlers.add(this);
+                println(username + " joined");
                 broadcastMessage("Server: " + username + " joined");
             } catch (IOException e) {
                 closeConnection(socket, bufferedReader, printWriter);
@@ -67,11 +64,9 @@ public class Server {
 
         private void broadcastMessage(String message) {
             for (ClientHandler clientHandler : clientHandlers) {
-                if (!this.equals(clientHandler))
-                    clientHandler.printWriter.println(message);
+                if (!this.equals(clientHandler)) clientHandler.printWriter.println(message);
             }
         }
-
 
         private void closeConnection(Socket socket, BufferedReader bufferedReader, PrintWriter printWriter) {
             try {
@@ -95,7 +90,12 @@ public class Server {
             while (socket.isConnected()) {
                 try {
                     clientMessage = bufferedReader.readLine();
-                    broadcastMessage(username + ": " + clientMessage);
+                    if (clientMessage.equals(":quit")) {
+                        broadcastMessage(username + " left the chat");
+                        println(username + " left");
+                        clientHandlers.remove(this);
+                        closeConnection(socket, bufferedReader, printWriter);
+                    } else broadcastMessage(username + ": " + clientMessage);
                 } catch (IOException e) {
                     closeConnection(socket, bufferedReader, printWriter);
                 }

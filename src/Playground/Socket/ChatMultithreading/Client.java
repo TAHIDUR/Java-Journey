@@ -1,4 +1,4 @@
-package Playground.Socket.Tcp.Chat;
+package Playground.Socket.ChatMultithreading;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,6 +34,7 @@ public class Client {
         while (socket.isConnected()) {
             String chatMessage = scanner.nextLine();
             printWriter.println(chatMessage);
+            if (chatMessage.equals(":quit")) closeConnection(socket, bufferedReader, printWriter);
         }
     }
 
@@ -74,7 +75,7 @@ public class Client {
             print("Please enter your username: ");
             Scanner scanner = new Scanner(System.in);
             String username = scanner.nextLine();
-            Socket socket = new Socket("localhost", 9999);
+            Socket socket = new Socket("localhost", 9898);
             Client client = new Client(socket, username);
             client.listenMessages();
             client.sendMessage();
