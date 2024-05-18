@@ -1,4 +1,4 @@
-package Playground.Socket.ChatMultithreading;
+package Playground.Socket.GroupChatMultithreading;
 
 import java.io.BufferedReader;
 import java.io.IOException;
