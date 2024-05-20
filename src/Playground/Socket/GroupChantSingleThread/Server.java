@@ -26,9 +26,7 @@ public class Server {
                     if (key.isAcceptable()) {
                         if (key.channel() instanceof ServerSocketChannel channel) {
                             var client = channel.accept();
-                            var socket = client.socket();
-                            var clientInfo = STR."\{socket.getInetAddress().getHostAddress()}:\{socket.getPort()}";
-                            System.out.println(STR."\{clientInfo} connected");
+                            System.out.println("client connected");
                             client.configureBlocking(false);
                             client.register(selector, SelectionKey.OP_READ);
                             clients.add(client);
@@ -39,9 +37,7 @@ public class Server {
                         if (key.channel() instanceof SocketChannel client) {
                             var byteRead = client.read(buffer);
                             if (byteRead == -1) {
-                                var socket = client.socket();
-                                var clientInfo = STR."\{socket.getInetAddress().getHostAddress()}:\{socket.getPort()}";
-                                System.out.println(STR."\{clientInfo} disconnected");
+                                System.out.println("client disconnected");
                             } else {
                                 buffer.flip();
                                 var message = new String(buffer.array(), buffer.position(), byteRead);

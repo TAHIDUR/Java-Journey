@@ -22,7 +22,7 @@ public class Server {
                     executor.submit(() -> {
                         try (var reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
                             var username = reader.readLine();
-                            System.out.println(STR."\{username} joined chat");
+                            System.out.printf("%s joined chat", username);
                             printers.add(writer);
                             for (String message; (message = reader.readLine()) != null; ) {
                                 broadCastMessage(message, writer, username);
@@ -40,7 +40,7 @@ public class Server {
 
     public static void broadCastMessage(String message,PrintWriter sender, String username){
         for(var writer: printers){
-            if(writer != sender) writer.println(STR."\{username}: \{message}");
+            if(writer != sender) writer.println(username +": "+ message);
         }
     }
 }
