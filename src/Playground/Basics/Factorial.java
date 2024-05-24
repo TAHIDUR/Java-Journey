@@ -19,7 +19,7 @@ public class Factorial {
         }
     }
 
-    private static int factorialWithLoop(int n) {
+    public static int factorialWithLoop(int n) {
         int result = 1;
         for (int i = n; i > 0; i--) {
             result *= i;
@@ -27,7 +27,7 @@ public class Factorial {
         return result;
     }
 
-    private static int factorialWithRecursion(int n) {
+    public static int factorialWithRecursion(int n) {
         if(n == 1) return 1;
         return n * factorialWithRecursion(n - 1);
     }

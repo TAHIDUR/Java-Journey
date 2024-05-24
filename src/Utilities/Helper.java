@@ -33,4 +33,13 @@ public class Helper {
         if(n == 1) return 1;
         return n + seriesSum(n - 1);
     }
+
+    public static int integerLength(int n) {
+        int length = 0;
+        while (n > 0) {
+            n /= 10;
+            length++;
+        }
+        return length;
+    }
 }
