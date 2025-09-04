@@ -1,31 +1,33 @@
 package MultiThreading.consumerProducer;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
 public class onQueue {
-    public boolean hasProduct = true;
+    public BlockingQueue<Integer> product = new ArrayBlockingQueue<Integer>(3);
 
     public synchronized void consumer() throws InterruptedException {
         System.out.println("Consumer started");
-        if (hasProduct) {
-            Thread.sleep(200);
-            hasProduct = false;
+        Thread.sleep(500);
+        while (!product.isEmpty()) {
+            product.take();
             System.out.println("Consumer consumed");
-        } else {
-            System.out.println("nothing to consume");
         }
+
+        wait();
+        System.out.println("nothing to consume");
     }
 
     public synchronized void produce() throws InterruptedException {
+//        Thread.sleep(500);
         System.out.println("Producer started");
-        if (!hasProduct) {
-            Thread.sleep(200);
-            hasProduct = true;
+        while (product.isEmpty()) {
+            product.add(1);
             System.out.println("Producer produced");
-        } else {
-            System.out.println("Producer already produced");
+            notifyAll();
         }
-    }
 
-    public synchronized void productStatus() {
-        System.out.println("product status: " + hasProduct);
+        System.out.println("Producer already produced");
+        wait();
     }
 }
