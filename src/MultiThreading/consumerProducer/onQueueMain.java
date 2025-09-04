@@ -8,7 +8,9 @@ public class onQueueMain {
         Thread producer = new Thread(() -> {
             System.out.println("Thread Name: " + Thread.currentThread().getName());
             try {
-                pc.produce();
+                for (int i = 0; i < 10; i++) {
+                    pc.produce();
+                }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -17,7 +19,9 @@ public class onQueueMain {
         Thread consumer = new Thread(() -> {
             System.out.println("Thread Name: " + Thread.currentThread().getName());
             try {
-                pc.consumer();
+                for (int i = 0; i < 10; i++) {
+                    pc.consumer();
+                }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

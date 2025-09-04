@@ -8,26 +8,26 @@ public class onQueue {
 
     public synchronized void consumer() throws InterruptedException {
         System.out.println("Consumer started");
-        Thread.sleep(500);
-        while (!product.isEmpty()) {
-            product.take();
-            System.out.println("Consumer consumed");
+        while (product.isEmpty()) {
+            System.out.println("nothing to consume waiting for producer");
+            wait();
         }
 
-        wait();
-        System.out.println("nothing to consume");
+        product.take();
+        System.out.println("Consumer consumed: " + product);
+        notifyAll();
     }
 
     public synchronized void produce() throws InterruptedException {
-//        Thread.sleep(500);
         System.out.println("Producer started");
-        while (product.isEmpty()) {
-            product.add(1);
-            System.out.println("Producer produced");
-            notifyAll();
+        while (product.size() == 3) {
+            System.out.println("Buffer full waiting for consumer: " + product);
+            wait();
         }
 
-        System.out.println("Producer already produced");
-        wait();
+        product.add(1);
+        System.out.println("Producer produced: " + product);
+        notifyAll();
+
     }
 }
