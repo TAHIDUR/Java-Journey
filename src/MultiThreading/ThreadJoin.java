@@ -1,24 +1,20 @@
 package MultiThreading;
 
 public class ThreadJoin extends Thread {
-
-
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         Thread print = new Thread(() -> {
-            for (int i = 0; i < 50; i++) {
-                System.out.println("From thread: "+ i);
+            try {
+                System.out.println("From thread: " + Thread.currentThread().getName());
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
+            System.out.println("Thread finished: " + Thread.currentThread().getName());
         });
         print.start();
-
-        try {
-            print.join();
-            for (int j = 0; j < 50; j++) {
-                System.out.println("From main thread: "+ j);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("100");
+        System.out.println("From main thread started");
+        Thread.sleep(2000);
+        print.join(); // Main thread will stop this point to join other thread
+        System.out.println("Main thread finished");
     }
 }

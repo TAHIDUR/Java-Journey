@@ -15,7 +15,7 @@ public class ReentranceLockExample {
             ExecutorService executor = Executors.newFixedThreadPool(5);
             List<Future<Integer>> futures = new ArrayList<>();
 
-            Set<Integer> orderNumbers = new HashSet<>();
+            List<Integer> orderNumbers = new ArrayList<>();
 
             for (int i = 0; i < count; i++) {
                 Callable<Integer> thread = new OrderNumber();
