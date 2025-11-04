@@ -42,4 +42,8 @@ public class Helper {
         }
         return length;
     }
+
+    public static void checkType(boolean bool) {
+        System.out.println("boolean");
+    }
 }
