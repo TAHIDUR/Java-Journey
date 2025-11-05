@@ -10,8 +10,10 @@ public class Main {
         Boolean isAvailable = PrimitiveToObject.valueOf(available);
         System.out.println(isAvailable.getClass().getSimpleName());
 
-        String s = "hello"; // this immutable not changed
-        s.toUpperCase(); // every time return a new instance
-        System.out.println(s);
+        // A second advantage of static factory methods is that, unlike constructors, they are not required to create a new object each time they’re invoked
+        Boolean alsoAvailable = PrimitiveToObject.valueOf(available);
+
+        // PrimitiveToObject.valueOf is immutable
+        System.out.println(isAvailable == alsoAvailable);
     }
 }
